@@ -175,7 +175,7 @@ export default function useGame(){
             currentWords.filter((i) => !group.words.includes(i.word))
         );
 
-        if(correctGroups.length === 4) {
+        if(correctGroups.length === 5) {
             return {result: "win"};
         }else{
             return {result: "correct"}
