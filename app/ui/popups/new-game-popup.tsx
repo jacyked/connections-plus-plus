@@ -1,12 +1,12 @@
 import GameButton from "../button/game-button";
 import Modal from "./modal";
 
-type WinPopupProps = {
+type NewGamePopupProps = {
   isOpen: boolean;
   onClose: () => void;
 };
 
-export default function NewGamePopup(props: WinPopupProps) {
+export default function NewGamePopup(props: NewGamePopupProps) {
   return (
     <Modal isOpen={props.isOpen} onClose={props.onClose}>
       <div className="flex flex-col items-center justify-center px-12">
@@ -14,7 +14,7 @@ export default function NewGamePopup(props: WinPopupProps) {
         <h2 className="text-black mb-8">{"Are you sure you want to generate a new game?"}</h2>
         <div className="flex gap-2 mb-12">
         <GameButton text="Reset" isAlert onClick={() => window.location.reload()} />
-        <GameButton text="Continue Current Game" onClick={props.onClose} />
+        <GameButton text="Back" onClick={props.onClose} />
         </div>
       </div>
     </Modal>

@@ -1,9 +1,14 @@
+'use client';
 import Link from 'next/link';
 import NavLinks from '@/app/ui/dashboard/nav-links';
-import AcmeLogo from '@/app/ui/acme-logo';
-import { PowerIcon } from '@heroicons/react/24/outline';
+import Logo from '../logo';
+import { PowerIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
+import RulesPopup from '../popups/rules-popup';
+import { useState } from 'react';
+import clsx from 'clsx';
 
 export default function SideNav() {
+  const [showRulesPopup, setShowRulesPopup] = useState(false);
   return (
     <div className="flex h-full flex-col px-3 py-4 md:px-2">
       <Link
@@ -11,14 +16,26 @@ export default function SideNav() {
         href="/"
       >
         <div className="w-32 text-white md:w-40">
-          <AcmeLogo />
+          <Logo />
         </div>
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
         <NavLinks />
+        <button className={clsx(
+          'flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3'
+        )}
+          onClick={() => setShowRulesPopup(true)}>
+            <QuestionMarkCircleIcon className="w-6"/>
+            <div className="hidden md:block">Rules</div>
+        </button>
+        <RulesPopup
+        isOpen={showRulesPopup}
+        onClose={() => setShowRulesPopup(false)}
+      />
         <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>
         <form>
-          <button className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+          <button className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
+            >
             <PowerIcon className="w-6" />
             <div className="hidden md:block">Support a Dev</div>
           </button>

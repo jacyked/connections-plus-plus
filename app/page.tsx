@@ -179,10 +179,13 @@ export default function Page() {
             wrongGuessAnimationState={wrongGuessAnimationState}
           />
         </div>
+        <div className='flex flex-row items-center justify-center'>
         <h2 className="text-black my-4 md:my-8 mx-8">
           Mistakes Remaining:{" "}
-          {wrongGuesses > 0 ? Array(wrongGuesses).fill("•") : ""}
         </h2>
+        <span className="text-4xl -mt-1">
+          {wrongGuesses > 0 ? Array(wrongGuesses).fill("•") : ""}</span>
+        </div>
         {renderGameButtons()}
       </div>
       <WinPopup
