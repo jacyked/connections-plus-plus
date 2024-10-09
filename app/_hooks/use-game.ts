@@ -147,13 +147,34 @@ export default function useGame(){
         );
     };
 
+    function checkPrevGuesses() {
+        let duplicate = false;
+        const justWords = <any[]>[];
+        selectedWords.forEach((i) => {
+            justWords.push(i.word);
+        })
+        prevGuesses.current.forEach((i) => {
+            const thisGuess = <any[]>[];
+            i.forEach((j) => {
+                thisGuess.push(j.word);
+            });
+            const sortedGuess = [...thisGuess].sort();
+            const sortedCurr = [...justWords].sort();
+            if(sortedCurr.every((value, index) => value === sortedGuess[index])){
+                duplicate = true;
+            }
+        });
+        return duplicate;
+
+    }
+
     const getGuessResult = (): GuessResult => {
-        const duplicate = prevGuesses.current.some((guess) => guess.every((word) => selectedWords.includes(word)));
+        const duplicate = checkPrevGuesses();
         if(duplicate){
             return{result: "duplicate"};
+        }else{
+            prevGuesses.current.push(selectedWords);
         }
-
-        prevGuesses.current.push(selectedWords);
 
         const correctWordCount = currentGroups.map((group) => {
             return selectedWords.filter((i) => group.words.includes(i.word)).length;
