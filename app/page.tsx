@@ -77,15 +77,8 @@ export default function Page() {
 
   const renderGameButtons = () => {
     const inProgressButtons = (
-      <div className="flex gap-2 mb-12">
-        <GameButton
-          isAlert
-          text="New Game"
-          onClick={() => {
-            setShowNewGamePopup(true)
-          }
-
-        }/>
+      <div className="flex flex-col md:flex-row gap-6 mb-12">
+        <div className="flex gap-2 md:order-2">
         <GameButton
           text="Shuffle"
           onClick={shuffleBoard}
@@ -101,6 +94,18 @@ export default function Page() {
           unclickable={selectedWords.length !== 4 || submitted}
           onClick={handleSubmit}
         />
+        </div>
+        <div className="flex gap-2 content-center justify-items-center justify-center md:order-1">
+          <GameButton
+          isAlert
+          text="New Game"
+          onClick={() => {
+            setShowNewGamePopup(true)
+          }
+
+        }/></div>
+        
+        
       </div>
     );
 
@@ -162,7 +167,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="flex flex-col items-center w-11/12 md:w-3/4 lg:w-7/12 mx-auto mt-14">
+      <div className="flex flex-col items-center w-11/12 md:w-3/4 lg:w-7/12 mx-auto md:mt-14">
         <h1 className="text-black text-4xl font-semibold my-4 ml-4">
           Connections<strong>++</strong>
         </h1>

@@ -11,6 +11,11 @@ const config: Config = {
       gridTemplateColumns: {
         '13': 'repeat(13, minmax(0, 1fr))',
       },
+      fontSize: {
+        xxs: '0.7rem',
+        xxxs: '0.6rem',
+        xxxxs: '0.5rem',
+      },
       colors: {
         blue: {
           400: '#2589FE',
