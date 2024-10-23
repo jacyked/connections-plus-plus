@@ -29,6 +29,7 @@ export default function SideNav() {
             <div className="hidden md:block">Rules</div>
         </button>
         <RulesPopup
+        
         isOpen={showRulesPopup}
         onClose={() => setShowRulesPopup(false)}
       />
