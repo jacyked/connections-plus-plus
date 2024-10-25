@@ -1,4 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Connections++
+
+This is a practice project with next.js based on the NYT Connections game (no *connection* or affiliation)
+
+At the moment, the game pulls 1 category of each difficulty at random from a pool of all past Connections puzzles (at the time of creation, ~482? I believe). 
+The difference with this version is that it also generates a new "category"; 4 random words are also drawn from the global pool and added to the puzzle, meaning you have to guess 4 categories correctly instead of 3 in the original game (the final category never counts).
+There is some checking to make sure no duplicate words are present, but with this number of possible combinations I have yet to confirm that it functions at 100%. 
+
+
+## Roadmap/TODO
+
+- Add different game modes:
+    - Extra Hard: Instead of 4 random words, add 2 words from 2 random categories
+    - Classic++: Part of the difficulty of the original game is that there are often categories that can be mixed together; this game mode will re-use the original puzzles instead of generating them at random, but still add 4 random (or 2/2) words.
+- Improve layout/mobile responsiveness
+- Add animations for the Remaining Guesses dots
+- Add placeholder tiles until the game is generated
 
 ## Getting Started
 
@@ -15,22 +31,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
