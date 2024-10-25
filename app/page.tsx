@@ -1,6 +1,7 @@
 'use client'
 import { useCallback, useState } from "react";
-import GameButton from "./ui/button/game-button";
+import GameButton from "./ui/button/game-button"; 
+import ResetButton from "./ui/button/reset-button";
 import GameBoard from "./ui/game/gameboard";
 import LosePopup from "./ui/popups/lose-popup";
 import WinPopup from "./ui/popups/win-popup";
@@ -11,6 +12,7 @@ import useGame from "./_hooks/use-game";
 import usePopup from "./_hooks/use-popup";
 import { GuessResult, Word } from "./_types";
 import { getRating } from "./_utils";
+import { Circle } from "@mui/icons-material";
 
 
 
@@ -91,14 +93,13 @@ export default function Page() {
         />
         <GameButton
           text="Submit"
+          canBeSolid
           unclickable={selectedWords.length !== 4 || submitted}
           onClick={handleSubmit}
         />
         </div>
         <div className="flex gap-2 content-center justify-items-center justify-center md:order-1">
-          <GameButton
-          isAlert
-          text="New Game"
+          <ResetButton
           onClick={() => {
             setShowNewGamePopup(true)
           }
@@ -119,6 +120,7 @@ export default function Page() {
         }
         />
         <GameButton 
+          canBeSolid
           text="New Game"
           onClick={() => {
             window.location.reload();
@@ -137,7 +139,8 @@ export default function Page() {
           }
         }
         />
-        <GameButton 
+        <GameButton
+          canBeSolid 
           text="New Game"
           onClick={() => {
             window.location.reload();
@@ -184,12 +187,12 @@ export default function Page() {
             wrongGuessAnimationState={wrongGuessAnimationState}
           />
         </div>
-        <div className='flex flex-row items-center justify-center'>
-        <h2 className="text-black my-4 md:my-8 mx-8">
+        <div className='flex flex-row items-center justify-center w-80'>
+        <h2 className="text-black my-4 md:my-8 mr-8 w-2/3 text-right">
           Mistakes Remaining:{" "}
         </h2>
-        <span className="text-4xl -mt-1">
-          {wrongGuesses > 0 ? Array(wrongGuesses).fill("•") : ""}</span>
+        <span className="text-l -mt-1 w-1/3">
+          {wrongGuesses > 0 ? Array(wrongGuesses).fill(<Circle fontSize="inherit"/>) : ""}</span>
         </div>
         {renderGameButtons()}
       </div>
